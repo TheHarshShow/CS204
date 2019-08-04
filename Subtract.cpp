@@ -125,11 +125,19 @@ string Subtract(string a, string b){
 
 int main(){
 
-	string a,b,c;
-	cin>>a>>b;
+	long long t;
+	cin>>t;
 
-	c=Subtract(a,b);
+	while(t--){
 
-	cout<<endl<<c<<endl;
+		string a,b,c;
+		cin>>a>>b;
+
+		c=Subtract(a,b);
+
+		cout<<c<<endl;
+
+
+	}
 
 }
