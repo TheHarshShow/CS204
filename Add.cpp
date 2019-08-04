@@ -66,11 +66,17 @@ string Sum(string a, string b){
 
 int main(){
 
-	string a,b,c;
-	cin>>a>>b;
+	long long t;
 
-	c=Sum(a,b);
-	cout<<endl<<c<<endl;
+	cin>>t;
+	while(t--){
+
+		string a,b,c;
+		cin>>a>>b;
+
+		c=Sum(a,b);
+		cout<<c<<endl;
+	}
 
 
 }
