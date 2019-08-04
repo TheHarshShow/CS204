@@ -255,11 +255,18 @@ string Multiply(string a, string b){
 
 int main(){
 
-	string a,b;
-	cin>>a>>b;
-	string d=Multiply(a,b);
+	long long t;
+	cin>>t;
 
-	cout<<endl<<d<<endl;
+	while(t--){
+
+		string a,b;
+		cin>>a>>b;
+		string d=Multiply(a,b);
+
+		cout<<d<<endl;
+
+	}
 
 }
 
