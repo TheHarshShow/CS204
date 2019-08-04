@@ -8,6 +8,7 @@ string Sum(string a, string b);
 int stringCompare(string a, string b);
 string truncate(string a);
 string Quotient(string a, string b);
+string squareRoot(string a);
 
 string q;
 string r;
@@ -341,26 +342,47 @@ string Quotient(string a, string b){
 
 }
 
+string squareRoot(string a){
+
+	string x=a;
+	string y="0";
+
+	while(stringCompare(x,y) && x!=y){
+
+		string z=Quotient(Sum(x,y), "2");
+		if(Multiply(z,z) == a)return z;
+		else if(stringCompare(Multiply(z,z), a))x=Subtract(z,"1");
+		else y=Sum(z, "1");
+
+
+	}
+
+	return y;
+
+
+}
 
 int prime(string a){
 
-	if(a.length() <= 18){
+	/*if(a.length() < 18){
 
 		long long b=stoll(a);
 
-		long double c=sqrt(a);
-		for(long long i=0; i<=c; i++){
+		long double c=sqrt(b);
+		for(long long i=2; i<=c; i++){
 
-			if(b%c==0)return 0;
+			if(b%i==0)return 0;
 
 		}
 		return 1;
 
-	}
+	}*/
 
 	string b="2";
 
-	while(!stringCompare(b,a)){
+	string comp=squareRoot(a);
+
+	while(stringCompare(comp, b)){
 
 		if(Subtract(a, Multiply(b, Quotient(a,b))) == "0")return 0;
 		b=Sum(b, "1");
@@ -376,11 +398,20 @@ int main(){
 
 	
 
-	string a;
-	cin>>a;
+	long long t;
+	cin>>t;
+	while(t--){
 
-	if(prime(a))cout<<"Prime";
-	else cout<<"Not Prime";
+		string a;
+		cin>>a;
+
+		if(truncate(a)=="2"){cout<<"Prime"<<endl;continue;}
+
+		if(prime(a))cout<<"Prime"<<endl;
+		else cout<<"Not a Prime"<<endl;
+
+
+	}
 
 
 }
