@@ -284,6 +284,8 @@ string Quotient(string a, string b){
 	}
 
 	b=b.substr(t2,b.length()-t2);
+	
+	if(b=="0"){return "STOP, NO! PLEASE, NO!";}
 
 	if(!stringCompare(a,b))return "0";
 	else{
@@ -344,17 +346,24 @@ string Quotient(string a, string b){
 
 int main(){
 
-	string a,b;
-	cin>>a>>b;
+	long long t;
+	cin>>t;
+	while(t--){
+
+		string a,b;
+		cin>>a>>b;
 
 
 
-	string d=Quotient(a,b);
-	
+		string d=Quotient(a,b);
+		
+		if(d=="STOP, NO! PLEASE, NO!"){cout<<d<<endl;continue;}
 
 
-	cout<<"Q = "<<d<<endl;
-	cout<<"R = "<<Subtract(a,Multiply(d,b))<<endl;
+		cout<<d<<endl;
+		cout<<Subtract(a,Multiply(d,b))<<endl;
+
+	}
 
 
 }
