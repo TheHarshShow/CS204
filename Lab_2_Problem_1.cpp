@@ -57,7 +57,7 @@ int DelFirst(struct node **start){
 		*start=(*start)->next;
 		free(temp);
 
-		return 1;
+		return 0;
 
 
 	}
@@ -82,7 +82,7 @@ int Del(long long x, long long y, struct node **start){
 	}
 
 
-	while(temp!=NULL){
+	while(temp->next != NULL){
 
 		temp2=temp;
 		temp=temp->next;
@@ -198,13 +198,13 @@ int main(){
 
 		} else if(q==2){
 
-			DelFirst(&start);
+			cout<<DelFirst(&start)<<endl;
 
 		} else if(q==3){
 
 			long long a,b;
 			cin>>a>>b;
-			Del(a, b, &start);
+			cout<<Del(a, b, &start)<<endl;
 
 
 		} else if(q==4){
@@ -230,6 +230,7 @@ int main(){
 			
 
 		}
+
 
 
 	}
