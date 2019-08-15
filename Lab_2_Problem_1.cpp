@@ -110,22 +110,26 @@ int Del(long long x, long long y, struct node **start){
 
 }
 
-void Search(long double d, struct node *start){
+long long Search(long double d, struct node *start){
 
+	long long t=0;
 	struct node *temp=start;
 	while(temp!=NULL){
 
 
 		if(sqrt((long long)temp->x*(long long )temp->x + (long long)temp->y*(long long )temp->y) <= d){
 
-			cout<<"("<<temp->x<<","<<temp->y<<") ";
+			t++;
+			//cout<<"("<<temp->x<<","<<temp->y<<") ";
 
 
 		}
 		temp=temp->next;
 
 	}
-	cout<<endl;
+	//cout<<endl;
+
+	return t;
 
 }
 
@@ -198,20 +202,23 @@ int main(){
 
 		} else if(q==2){
 
-			cout<<DelFirst(&start)<<endl;
+			int r=DelFirst(&start);
+			if(r)cout<<r<<endl;
+
 
 		} else if(q==3){
 
 			long long a,b;
 			cin>>a>>b;
-			cout<<Del(a, b, &start)<<endl;
-
+			int r=Del(a, b, &start);
+			if(r)cout<<r<<endl;
 
 		} else if(q==4){
 
 			long double d;
 			cin>>d;
-			Search(d, start);
+			if(Search(d, start))cout<<Search(d, start)<<endl;
+			else cout<<-1<<endl;
 			
 			
 		} else if(q==5){
