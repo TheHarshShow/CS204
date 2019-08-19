@@ -242,6 +242,25 @@ ll evaluate(struct node *start){
 
 void build(string s, struct node *start){
 
+    REP(i,0,s.length()){
+
+        if(signs.find(s[i]) == signs.end()){
+
+            flagl=1;
+            return;
+
+        }
+
+    }
+
+    if(s[0]=='-'){
+
+        start->b=stoll(s);
+
+        return;
+
+
+    }
 
     for(ll i=s.length()-1; i>=0; i--){
 
@@ -431,7 +450,6 @@ int main(){
     signs.insert('9');
 
 
-    flagl=0;
 
     ll n;
     cin>>n;
@@ -442,6 +460,7 @@ int main(){
         cin>>q;
 
         while(q--){
+            flagl=0;
 
             string s;
             cin>>s;
