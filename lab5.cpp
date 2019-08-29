@@ -28,7 +28,6 @@ ll min(ll a, ll b);
 ll max(ll a, ll b);
 ll search(ll arr[], ll n, ll k);
 string findSum(string str1, string str2);
-
  
 string findSum(string str1, string str2) 
 { 
@@ -125,6 +124,8 @@ ll greatestSubarraySum(ll array[], ll n){
  
 ll powerrr(ll a, ll b){
  
+    if(b<0)return 0;
+
     ll ans = 1;
  
     for(ll i = 0; i < b; i++)ans*=a;
@@ -310,6 +311,7 @@ ll figure(string s){
     if(s[0] == '0' || s[0] == '1' || s[0] == '2' || s[0] == '3' || s[0] == '4' || s[0] == '5' || s[0] == '6' || s[0] == '7' || s[0] == '8' || s[0] == '9')return stoll(s);
     
 
+
     if(values.find(s) == values.end() || values[s]==INF){flagl=1;return INF;}
     else return values[s];
 
@@ -385,13 +387,20 @@ void inorder(struct node *start){
 
 ll evaluate(struct node *start){
 
-    ll x=0;
-
+   
+    if(flagl)return INF;
     if(start->s=="+")return evaluate(start->left)+evaluate(start->right);
     else if (start->s=="-") return evaluate(start->left)-evaluate(start->right);
     else if (start->s=="*") return evaluate(start->left)*evaluate(start->right);
     else if (start->s=="/") return evaluate(start->left)/evaluate(start->right);
-    else if (start->s=="^") return powerrr(evaluate(start->left), evaluate(start->right));
+    else if (start->s=="^") {
+        ll x=evaluate(start->left);
+        if(flagl)return INF;
+        ll y=evaluate(start->right);
+        if(flagl)return INF;
+        return powerrr(x,y);
+
+    }
     else {
 
         if((start->s)[0] =='~')return -1*figure((start->s).substr(1));
@@ -442,14 +451,18 @@ int main(){
             if(flag2)continue;
 
             vector<string> pos=post(s);
+
             //REP(i,0,pos.size())cout<<pos[i]<<" ";
             //cout<<enl;
             struct node *start = createNode();
             build(&start, pos);
-            //inorder(start);
             ll y = evaluate(start);
-            if(flagl)cout<<"CANT BE EVALUATED"<<endl;
-            else cout<<y<<endl;
+
+            if(flagl){cout<<"CANT BE EVALUATED"<<endl;continue;}
+            //inorder(start);
+            else {
+                cout<<y<<endl;
+            }
 
         }
 
