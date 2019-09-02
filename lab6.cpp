@@ -176,21 +176,50 @@ int main(){
 
     int n,q;
     cin>>n>>q;
-    ll users[n] = {0};
-    //REP(i,0,n)cout<<users[i]<<" "<<endl;
-    ll max1=-1;
-    ll maxindex=-1;
-    while(q--){
-        ll a;
-        cin>>a;
-        if(a==1){
-            ll b,c;
-            cin>>b>>c;
-            users[b-1]+=c;
-            if(users[b-1]>max1){max1=users[b-1];maxindex=b;}
+    ll x[q];
+    ll y[q];
+    ll z[q];
+    ll w[q];
+    ll k=0;
+    REP(i,0,q){
+        cin>>x[i];
+        if(x[i]==1){
+            cin>>y[i]>>z[i];
+            w[k]=y[i];
+            k++;
+        }else{
+            y[i]=-1;
+            z[i]=-1;
+        }
+    }
+    sort(w,w+k);
+    ll users[n];
+    ll val[n]={0};
+
+    users[0]=w[0];
+    ll k2=1;
+    REP(i,1,k){
+        if(w[i]==w[i-1])continue;
+        else{
+            users[k2]=w[i];
+            k2++;
+        }
+    }
+    //REP(i,0,k2)cout<<users[i]<<endl;
+    //sort(users, users+k2);
+    ll max1=-1,maxindex=-1;
+    REP(i,0,q){
+        if(x[i]==1){
+            ll temp=search(users,y[i],k2);
+            //cout<<temp<<endl;
+            val[temp]+=z[i];
+            if(val[temp]>max1){
+                max1=val[temp];
+                maxindex=temp;
+            }
         } else{
             if(maxindex==-1)cout<<"No data available."<<endl;
-            else cout<<maxindex<<endl;
+            else cout<<users[maxindex]<<endl;
         }
     }
 
