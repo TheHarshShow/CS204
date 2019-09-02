@@ -193,8 +193,7 @@ int main(){
         }
     }
     sort(w,w+k);
-    ll users[n];
-    ll val[n]={0};
+    ll users[k];
 
     users[0]=w[0];
     ll k2=1;
@@ -205,6 +204,9 @@ int main(){
             k2++;
         }
     }
+
+    ll val[k2]={0};
+
     //REP(i,0,k2)cout<<users[i]<<endl;
     //sort(users, users+k2);
     ll max1=-1,maxindex=-1;
