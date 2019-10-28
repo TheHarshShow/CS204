@@ -271,14 +271,14 @@ int main(){
         dfs(i,1);
         if(flag){
 
-            cout<<"NO"<<endl;
+            cout<<"YES"<<endl;
             return 0;
 
         }
 
     }
 
-    cout<<"YES"<<endl;
+    cout<<"NO"<<endl;
 
 
 }
